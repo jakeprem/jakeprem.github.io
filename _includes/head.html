@@ -1,0 +1,60 @@
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<link href="https://fonts.googleapis.com/css?family=Merriweather:300|Raleway:400,700" rel="stylesheet">
+<link rel="stylesheet" href="{{ "/assets/css/style.css" | relative_url }}">
+<title>{{ page.title | default: site.title }}</title>
+{% seo %}
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@your_twitter_handle">
+<meta name="twitter:creator" content="@your_twitter_handle">
+
+<meta property="og:image" content="{{ site.url }}/img/twitter_card2.png" />
+<meta name="twitter:image:src" content="{{ site.url }}/img/twitter_card2.png">
+<meta content="{{ site.title }}" property="og:site_name">
+
+{% if page.title %}
+  <meta name="twitter:title" content="{{ page.title }}">
+  <meta content="{{ page.title }}" property="og:title">
+  <meta content="article" property="og:type">
+{% else %}
+  <meta name="twitter:title" content="{{ site.title }}">
+  <meta content="{{ site.title }}" property="og:title">
+  <meta content="website" property="og:type">
+{% endif %}
+
+{% if page.description %}
+  <meta name="twitter:description" content="{{ page.description }}">
+  <meta content="{{ page.description }}" property="og:description">
+{% else %}
+  <meta name="twitter:description" content="{{ site.description }}">
+  <meta content="{{ site.description }}" property="og:description">
+{% endif %}
+
+{% if page.url %}
+  <meta name="twitter:url" content="{{ site.url }}{{ page.url }}">
+  <meta content="{{ site.url }}{{ page.url }}" property="og:url">
+{% endif %}
+
+{% if page.date %}
+  <meta content="{{ page.date | date_to_xmlschema }}" property="article:published_time">
+{% endif %}
+{% if page.image %}
+  <meta content="{{ site.url }}/img/twitter_card2.png" property="og:image">
+  <meta property="og:image" content="{{ site.url }}/img/twitter_card2.png" />
+{% else %}
+  <meta content="{{ site.url }}/img/twitter_card2.png" property="og:image">
+{% endif %}
+
+{% if page.categories %}
+  {% for category in page.categories limit:1 %}
+  <meta content="{{ category }}" property="article:section">
+  {% endfor %}
+{% endif %}
+  
+{% if page.tags %}
+  {% for tag in page.tags %}
+  <meta content="{{ tag }}" property="article:tag">
+  {% endfor %}
+{% endif %}
